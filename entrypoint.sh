@@ -28,7 +28,7 @@ generate_flags() {
 main() {
     validate
     generate_flags
-    netlify deploy "$FLAGS"
+    netlify deploy $FLAGS
 }
 
 main
