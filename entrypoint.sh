@@ -6,14 +6,12 @@ validate() {
         echo "Auth Token is not set!"
         exit 1
     fi
-    NETLIFY_AUTH_TOKEN="$PLUGIN_AUTH_TOKEN"
 
     if [ -z "$PLUGIN_SITE_ID" ]
     then
         echo "Site ID is not set!"
         exit 1
     fi
-    NETLIFY_SITE_ID="$PLUGIN_SITE_ID"
 }
 
 generate_flags() {
@@ -28,7 +26,7 @@ generate_flags() {
 main() {
     validate
     generate_flags
-    netlify deploy $FLAGS
+    NETLIFY_AUTH_TOKEN="$PLUGIN_AUTH_TOKEN" NETLIFY_SITE_ID="$PLUGIN_SITE_ID" netlify deploy $FLAGS
 }
 
 main
